@@ -47,7 +47,7 @@
 	line-height:75px;
 	margin-bottom:50px}}
 
-/*.dropdown-menu{
+.dropdown-menu{
 	background-color: #fff;
 	color: #000;
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -55,8 +55,9 @@
     border-radius: 3px;
     font-size: 18px;
     margin: 0 auto;	
-    left:300px;
-}*/
+    left:440px;
+    width: 250px;
+}
 
 select{
 	width: 250px;
