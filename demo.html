@@ -79,7 +79,7 @@
                         <div class="intro-lead-in">Contract Estimate:
                             <input type="text" placeholder="$(Optional)" id="estimate"></input>
                         </div>
-                        <div class="intro-lead-in">ZipCode:
+                        <div class="intro-lead-in">Zip Code:
                             <div class="dropdown" id="zip">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl" id="ZipCode">Select a ZipCode <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -127,7 +127,7 @@
                         <div class="intro-lead-in"><span id="ROI"></span></div>
                     </div>
                     <div id="activeBT">
-                        <div class="page-scroll btn btn-xl">Tell me the cost!</div>
+                        <div class="page-scroll btn btn-xl">Calculate</div>
                      </div>
                 </div>               
             </div>
@@ -228,7 +228,7 @@
                             var roi = (finalcost-estimate)/estimate;
                             roi = parseFloat(roi).toFixed(2);
                             $("#ROI").html(roi);
-                            $("#ROItitle").html("The ROI is");
+                            $("#ROItitle").html("Projected ROI");
                         }
                         }
                     }
