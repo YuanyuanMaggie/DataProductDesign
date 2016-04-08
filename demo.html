@@ -212,13 +212,10 @@
                     $( this ).removeClass( "hover" );
                 }
                 );
-            // $('#delete').click(function(){
-            //     console.log("delete");
-            //    // $(this).parent().remove();
-            //     });
+            
             $(function(){
-            $('#delete').on('click','.delete',function(){
-                alert("Delelte");
+            $('#demo1').on('click','.delete',function(){
+                $(this).parent().remove();
             });
             });
             var finalcost;
