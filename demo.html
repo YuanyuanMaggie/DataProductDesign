@@ -139,6 +139,7 @@
         
     <script type="text/javascript">
             var roomnumber = 1;
+            var numbercheck = 1;
             var squareft = {"85298":111.72, "85233":145.27,"85297":99.49,"85235":101.1,"85296":98.99,"85234":170.3,"Global":122}
             var area = {
                 "Home Office":{
@@ -220,6 +221,7 @@
             var finalcost = 0;
             var estimate;
             $('#activeBT').click(function(){
+                numbercheck=1;
                 Type=[];
                 Size=[];
                 finalcost = 0;
@@ -231,34 +233,22 @@
                 Size.push($(this).text());
                 })
 
-                // if(Type=="none"){
-                //     alert("Please select a type of room!");
-                // }else{
-                //     if(Size=="none"){
-                //     alert("Please select the size of room!");
-                //     }else{
-                //         finalcost = squareft[ZipCode]*area[Type][Size];
-                //         finalcost = parseFloat(finalcost).toFixed(2);
-                //         $("#resultA").html("$"+finalcost);
-                        
-                //         if(estimate==""){
-                //             console.log("empty");
-                //         }else{
-                //             var roi = (finalcost-estimate)/estimate;
-                //             roi = roi*100;
-                //             roi = parseFloat(roi).toFixed(2);
-                //             $("#ROI").html(roi+"%");
-                //             $("#ROItitle").html("Projected ROI");
-                //         }
-                //         }
-                //     }
                 for(var i = 0;i<Type.length;i++){
-                    finalcost += squareft[ZipCode]*area[Type[i]][Size[i]];
+                    if(Type[i]=="Select a type "){
+                        alert("Please select a type!");
+                        numbercheck = 0;
+                    }else if(Size[i]=="Select a size "){
+                        alert("Please select a size");
+                        numbercheck = 0;
+                    }else{
+                        finalcost += squareft[ZipCode]*area[Type[i]][Size[i]];
+                    }
                 }
 
-                finalcost = parseFloat(finalcost).toFixed(2);
+                if(numbercheck==1){
+                    finalcost = parseFloat(finalcost).toFixed(2);
                     $("#resultA").html("$"+finalcost);
-                if(estimate==""){
+                    if(estimate==""){
                         }else{
                     var roi = (finalcost-estimate)/estimate;
                     roi = roi*100;
@@ -266,6 +256,8 @@
                     $("#ROI").html(roi+"%");
                     $("#ROItitle").html("Projected ROI");
                 }
+                }
+                
                 
             })
 
