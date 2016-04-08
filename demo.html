@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">RENVTR</a>
+                <a class="navbar-brand page-scroll" href="index.html">RNVTR</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -95,7 +95,7 @@
                          <div class="room" id="1">
                              <div class="intro-lead-in">Add a room:
                                 <div class="dropdown" id="type">
-                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl" id="roomtype">Select a type <b class="caret"></b></a>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl roomtype" id="roomtype">Select a type <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>Home Office</li>
                                         <li>Den</li>
@@ -109,7 +109,7 @@
                              </div>
                              <div class="intro-lead-in">Choose size:
                                 <div class="dropdown" id="size">
-                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl" id="roomsize">Select a size <b class="caret"></b></a>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl roomsize" id="roomsize">Select a size <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>Small</li>
                                         <li>Medium</li>
@@ -173,8 +173,8 @@
                 },
             }
             var ZipCode = "Global";
-            var Size = "none";
-            var Type = "none";
+            var Size = [];
+            var Type = [];
             $('#zip .dropdown-menu li').click(function(){
                 ZipCode = $(this).html();
                 $('#ZipCode').html(
@@ -189,10 +189,10 @@
                 }
                 );
 
-            $('#type .dropdown-menu li').click(function(){
-                Type = $(this).html()
-                $('#roomtype').html(Type);
-                });
+            // $('#type .dropdown-menu li').click(function(){
+            //     Type = $(this).html()
+            //     $('#roomtype').html(Type);
+            //     });
 
             $('#size .dropdown-menu li').hover(function() {
                     $( this ).addClass( "hover" );
@@ -201,10 +201,10 @@
                 }
                 );
 
-            $('#size .dropdown-menu li').click(function(){
-                Size = $(this).html()
-                $('#roomsize').html(Size);
-                });
+            // $('#size .dropdown-menu li').click(function(){
+            //     Size = $(this).html()
+            //     $('#roomsize').html(Size);
+            //     });
 
             $('#type .dropdown-menu li').hover(function() {
                     $( this ).addClass( "hover" );
@@ -212,37 +212,54 @@
                     $( this ).removeClass( "hover" );
                 }
                 );
-            
+           
             $(function(){
             $('#demo1').on('click','.delete',function(){
                 $(this).parent().remove();
             });
+            $('#demo1').on('click','#type .dropdown-menu li',function(){
+                $(this).parent().parent().find('a').html($(this).html());
+                });
+            $('#demo1').on('click','#size .dropdown-menu li',function(){
+                $(this).parent().parent().find('a').html($(this).html());
+                });
             });
             var finalcost;
             var estimate;
             $('#activeBT').click(function(){
+                Type=[];
+                Size=[];
                 estimate = $("#estimate").val();
-                if(Type=="none"){
-                    alert("Please select a type of room!");
-                }else{
-                    if(Size=="none"){
-                    alert("Please select the size of room!");
-                    }else{
-                        finalcost = squareft[ZipCode]*area[Type][Size];
-                        finalcost = parseFloat(finalcost).toFixed(2);
-                        $("#resultA").html("$"+finalcost);
+                
+                $('.roomtype').each(function(){
+                Type.push($(this).text());
+                })
+                $('.roomsize').each(function(){
+                Size.push($(this).text());
+                })
+                console.log(Type);
+                console.log(Size);
+                // if(Type=="none"){
+                //     //alert("Please select a type of room!");
+                // }else{
+                //     if(Size=="none"){
+                //     //alert("Please select the size of room!");
+                //     }else{
+                //         finalcost = squareft[ZipCode]*area[Type][Size];
+                //         finalcost = parseFloat(finalcost).toFixed(2);
+                //         $("#resultA").html("$"+finalcost);
                         
-                        if(estimate==""){
-                            console.log("empty");
-                        }else{
-                            var roi = (finalcost-estimate)/estimate;
-                            roi = roi*100;
-                            roi = parseFloat(roi).toFixed(2);
-                            $("#ROI").html(roi+"%");
-                            $("#ROItitle").html("Projected ROI");
-                        }
-                        }
-                    }
+                //         if(estimate==""){
+                //             console.log("empty");
+                //         }else{
+                //             var roi = (finalcost-estimate)/estimate;
+                //             roi = roi*100;
+                //             roi = parseFloat(roi).toFixed(2);
+                //             $("#ROI").html(roi+"%");
+                //             $("#ROItitle").html("Projected ROI");
+                //         }
+                //         }
+                //     }
                 
             })
 
