@@ -1,6 +1,6 @@
 #demo1{
 	background-image:url(../img/demo1.jpg);
-	background-repeat:none;
+	background-repeat:repeat-y;
 	background-attachment:scroll;
 	background-position:center center;
 	-webkit-background-size:cover;
@@ -10,7 +10,7 @@
 	text-align:center;color:#fff}
 
 #demo1 .intro-text{
-	padding-top:100px;
+	padding-top:50px;
 	padding-bottom:50px}
 
 #demo1 .intro-text .intro-lead-in{
@@ -30,9 +30,11 @@
 @media (min-width:768px)
 
 {#demo1 .intro-text{
-	padding-top:150px;
+	padding-top:50px;
 	padding-bottom:200px}
-
+.alignLeft{
+	text-align: left;
+}
 #demo1 .intro-text .intro-lead-in{
 	font-family:"Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-style:italic;
@@ -43,10 +45,33 @@
 #demo1 .intro-text .intro-heading{
 	font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	text-transform:uppercase;font-weight:700;
-	font-size:30px;
+	font-size:60px;
 	line-height:75px;
 	margin-bottom:50px}}
+.dropdown{
+	width: 250px;
+	background-color: #fed136;
+	display: inline-block;
+	margin-left: 10px;
+}
+.btn-xl{
+	width: 250px;
+	padding: 10px 20px;
+}
+.dropdown li{
+	cursor: pointer;
+}
+.dropdown li{
+	padding-left: 30px;
+}
+.dropdown-menu li:hover{
+	border-color: #fed136;
+}
 
+.hover{
+	background-color: #fed136;
+	color: #fff;
+}
 .dropdown-menu{
 	background-color: #fff;
 	color: #000;
@@ -55,19 +80,51 @@
     border-radius: 3px;
     font-size: 18px;
     margin: 0 auto;	
-    left:440px;
+    left:0px;
     width: 250px;
 }
 
-select{
-	width: 250px;
-	height: 40px;
-	padding-top: 10px;
+#activeBT .btn-xl{
+	background-color: #fe4c36;
+	border-color: #fe4c36;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	padding: 20px 20px;	
 }
 
-select option {
-    margin:40px;
-    background: rgba(0,0,0,0.3);
-    color:#fff;
-    text-shadow:0 1px 0 rgba(0,0,0,0.4);
+#resultA{
+	font-size: 70px;
+	font-weight: 700;
+}
+.cover{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.team-member img{
+	width: 220px;
+	height: 220px;
+}
+
+.room{
+	position: relative;
+}
+.size{
+	position: absolute;
+	left:200px;
+}
+
+.pricetitle{
+	font-size: 30px;
+}
+input{
+	color: #000;
+}
+.addroom{
+	background-color: #fff;
+	color: #fed136;
+}
+
+.addroom:hover{
+	background-color: #fed136;
+	color: #fff;
 }

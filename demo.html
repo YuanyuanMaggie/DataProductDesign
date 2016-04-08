@@ -27,6 +27,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
 </head>
 
@@ -42,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Team 3</a>
+                <a class="navbar-brand page-scroll" href="index.html">RENVTR</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,19 +54,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#questions">Questions</a>
+                        <a class="page-scroll" href="demo.html">Demo</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#model">Model</a>
+                        <a class="page-scroll" href="index.html#team">Team</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#analysis">Analysis</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#team">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="index.html#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -77,47 +73,168 @@
     <section id="demo1">
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">I'm a house owner.</div>
-                <div class="intro-heading">My house locates at: 
-                    <div class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl">Select a ZipCode <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">85233</a></li>
-                            <li><a href="#">85234</a></li>
-                            <li><a href="#">85295</a></li>
-                            <li><a href="#">85296</a></li>
-                            <li><a href="#">85297</a></li>
-                            <li><a href="#">85298</a></li>
-                        </ul>
+                <div class="intro-heading">I'm a house owner.</div>
+                <div class="row">
+                    <div class="col-md-7 alignLeft">
+                        <div class="intro-lead-in">Contract Estimate:
+                            <input type="text" placeholder="$(Optional)" id="estimate"></input>
+                        </div>
+                        <div class="intro-lead-in">ZipCode:
+                            <div class="dropdown" id="zip">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl" id="ZipCode">Select a ZipCode <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>85233</li>
+                                    <li>85234</li>
+                                    <li>85295</li>
+                                    <li>85296</li>
+                                    <li>85297</li>
+                                    <li>85298</li>
+                                </ul>
+                            </div>
+                         </div>
+                         <div class="room" id="1">
+                             <div class="intro-lead-in">Add a room:
+                                <div class="dropdown" id="type">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl" id="roomtype">Select a type <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>Home Office</li>
+                                        <li>Den</li>
+                                        <li>Game Room</li>
+                                        <li>Bedroom</li>
+                                        <li>Bathroom</li>
+                                        <li>Closet</li>
+                                        <li>Dining Room</li>
+                                    </ul>
+                                </div>
+                             </div>
+                             <div class="intro-lead-in">Choose size:
+                                <div class="dropdown" id="size">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-xl" id="roomsize">Select a size <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>Small</li>
+                                        <li>Medium</li>
+                                        <li>Large</li>
+                                    </ul>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="btn btn-xl addroom" id="addroom">Add more rooms</div>
                     </div>
-                </div>
-                <select>
-                    <option value="volvo">85233</option>
-                    <option value="saab">85234</option>
-                    <option value="mercedes">85295</option>
-                    <option value="audi">85296</option>
-                    <option value="audi">85297</option>
-                    <option value="audi">85298</option>
-                </select>
-                <div class="intro-heading"><span id="addfeature"></span> will increase more value</div>
-                
+                    <div class="col-md-5 alignLeft">
+                        <div class="intro-lead-in"><span class="pricetitle">Projected Sales Price Lift</span></div>
+                        <div id="resultA"></div>
+                        <div class="intro-lead-in"><span id="ROItitle"></span></div>
+                        <div class="intro-lead-in"><span id="ROI"></span></div>
+                    </div>
+                    <div id="activeBT">
+                        <div class="page-scroll btn btn-xl">Tell me the cost!</div>
+                     </div>
+                </div>               
             </div>
         </div>
     </section>
         
+    <script type="text/javascript">
+            var squareft = {"85298":111.72, "85233":145.27,"85297":99.49,"85235":101.1,"85296":98.99,"85234":170.3,"Global":122}
+            var area = {
+                "Home Office":{
+                    "Small":80,
+                    "Medium":168,
+                    "Large":252
+                },
+                "Den":{
+                    "Small":100,
+                    "Medium":144,
+                    "Large":224
+                },
+                "Game Room":{
+                    "Small":216,
+                    "Medium":384,
+                    "Large":540
+                },
+                "Bedroom":{
+                    "Small":100,
+                    "Medium":144,
+                    "Large":224
+                },
+                "Closet":{
+                    "Small":8,
+                    "Medium":12,
+                    "Large":16
+                },
+                 "Dining Room":{
+                    "Small":120,
+                    "Medium":192,
+                    "Large":252
+                },
+            }
+            var ZipCode = "Global";
+            var Size = "none";
+            var Type = "none";
+            $('#zip .dropdown-menu li').click(function(){
+                ZipCode = $(this).html();
+                $('#ZipCode').html(
+                    ZipCode
+                )
+                });
+            
+            $('#zip .dropdown-menu li').hover(function() {
+                    $( this ).addClass( "hover" );
+                }, function() { 
+                    $( this ).removeClass( "hover" );
+                }
+                );
 
-    <section id="demo2" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">I'm an investor</h2>
-                    <h3 class="section-subheading text-muted">Following are hourses that undervalued </h3>
-                </div>
-            </div>
-            </div>
-        </div>
-    </section>
+            $('#type .dropdown-menu li').click(function(){
+                Type = $(this).html()
+                $('#roomtype').html(Type);
+                });
 
+            $('#size .dropdown-menu li').hover(function() {
+                    $( this ).addClass( "hover" );
+                }, function() { 
+                    $( this ).removeClass( "hover" );
+                }
+                );
+
+            $('#size .dropdown-menu li').click(function(){
+                Size = $(this).html()
+                $('#roomsize').html(Size);
+                });
+
+            $('#type .dropdown-menu li').hover(function() {
+                    $( this ).addClass( "hover" );
+                }, function() { 
+                    $( this ).removeClass( "hover" );
+                }
+                );
+            var finalcost;
+            var estimate;
+            $('#activeBT').click(function(){
+                estimate = $("#estimate").val();
+                if(Type=="none"){
+                    alert("Please select a type of room!");
+                }else{
+                    if(Size=="none"){
+                    alert("Please select the size of room!");
+                    }else{
+                        finalcost = squareft[ZipCode]*area[Type][Size];
+                        finalcost = parseFloat(finalcost).toFixed(2);
+                        $("#resultA").html("$"+finalcost);
+                        
+                        if(estimate==""){
+                            console.log("empty");
+                        }else{
+                            var roi = (finalcost-estimate)/estimate;
+                            roi = parseFloat(roi).toFixed(2);
+                            $("#ROI").html(roi);
+                            $("#ROItitle").html("The ROI is");
+                        }
+                        }
+                    }
+                
+            })
+    </script>
 
     <footer>
         <div class="container">
@@ -126,14 +243,6 @@
                     <span class="copyright">Copyright &copy; Team 3 @ 2016</span>
                 </div>
                 <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
@@ -145,12 +254,10 @@
         </div>
     </footer>
 
-    <!-- Portfolio Modals -->
-    <!-- Use the modals below to showcase details about your portfolio projects! -->
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
