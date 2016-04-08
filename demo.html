@@ -173,8 +173,10 @@
                 },
             }
             var ZipCode = "Global";
-            var Size = [];
-            var Type = [];
+            // var Size = [];
+            // var Type = [];
+            var Size = "none";
+            var Tyle = "none";
             $('#zip .dropdown-menu li').click(function(){
                 ZipCode = $(this).html();
                 $('#ZipCode').html(
@@ -189,10 +191,10 @@
                 }
                 );
 
-            // $('#type .dropdown-menu li').click(function(){
-            //     Type = $(this).html()
-            //     $('#roomtype').html(Type);
-            //     });
+            $('#type .dropdown-menu li').click(function(){
+                Type = $(this).html()
+                $('#roomtype').html(Type);
+                });
 
             $('#size .dropdown-menu li').hover(function() {
                     $( this ).addClass( "hover" );
@@ -201,10 +203,10 @@
                 }
                 );
 
-            // $('#size .dropdown-menu li').click(function(){
-            //     Size = $(this).html()
-            //     $('#roomsize').html(Size);
-            //     });
+            $('#size .dropdown-menu li').click(function(){
+                Size = $(this).html()
+                $('#roomsize').html(Size);
+                });
 
             $('#type .dropdown-menu li').hover(function() {
                     $( this ).addClass( "hover" );
@@ -217,12 +219,12 @@
             $('#demo1').on('click','.delete',function(){
                 $(this).parent().remove();
             });
-            $('#demo1').on('click','#type .dropdown-menu li',function(){
-                $(this).parent().parent().find('a').html($(this).html());
-                });
-            $('#demo1').on('click','#size .dropdown-menu li',function(){
-                $(this).parent().parent().find('a').html($(this).html());
-                });
+            // $('#demo1').on('click','#type .dropdown-menu li',function(){
+            //     $(this).parent().parent().find('a').html($(this).html());
+            //     });
+            // $('#demo1').on('click','#size .dropdown-menu li',function(){
+            //     $(this).parent().parent().find('a').html($(this).html());
+            //     });
             });
             var finalcost;
             var estimate;
@@ -232,6 +234,7 @@
                 estimate = $("#estimate").val();
                 
                 $('.roomtype').each(function(){
+
                 Type.push($(this).text());
                 })
                 $('.roomsize').each(function(){
@@ -239,27 +242,27 @@
                 })
                 console.log(Type);
                 console.log(Size);
-                // if(Type=="none"){
-                //     //alert("Please select a type of room!");
-                // }else{
-                //     if(Size=="none"){
-                //     //alert("Please select the size of room!");
-                //     }else{
-                //         finalcost = squareft[ZipCode]*area[Type][Size];
-                //         finalcost = parseFloat(finalcost).toFixed(2);
-                //         $("#resultA").html("$"+finalcost);
+                if(Type=="none"){
+                    alert("Please select a type of room!");
+                }else{
+                    if(Size=="none"){
+                    alert("Please select the size of room!");
+                    }else{
+                        finalcost = squareft[ZipCode]*area[Type][Size];
+                        finalcost = parseFloat(finalcost).toFixed(2);
+                        $("#resultA").html("$"+finalcost);
                         
-                //         if(estimate==""){
-                //             console.log("empty");
-                //         }else{
-                //             var roi = (finalcost-estimate)/estimate;
-                //             roi = roi*100;
-                //             roi = parseFloat(roi).toFixed(2);
-                //             $("#ROI").html(roi+"%");
-                //             $("#ROItitle").html("Projected ROI");
-                //         }
-                //         }
-                //     }
+                        if(estimate==""){
+                            console.log("empty");
+                        }else{
+                            var roi = (finalcost-estimate)/estimate;
+                            roi = roi*100;
+                            roi = parseFloat(roi).toFixed(2);
+                            $("#ROI").html(roi+"%");
+                            $("#ROItitle").html("Projected ROI");
+                        }
+                        }
+                    }
                 
             })
 
