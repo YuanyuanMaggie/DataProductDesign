@@ -73,7 +73,7 @@
     <section id="demo1">
         <div class="container">
             <div class="intro-text">
-                <div class="intro-heading">I'm a house owner.</div>
+                <div class="intro-heading">Renovation ROI, simplified</div>
                 <div class="row">
                     <div class="col-md-7 alignLeft">
                         <div class="intro-lead-in">Contract Estimate:
@@ -226,8 +226,9 @@
                             console.log("empty");
                         }else{
                             var roi = (finalcost-estimate)/estimate;
-                            roi = parseFloat(roi).toFixed(2);
-                            $("#ROI").html(roi);
+                            roi = parseFloat(roi).toFixed(4);
+                            roi = roi*100;
+                            $("#ROI").html(roi+"%");
                             $("#ROItitle").html("Projected ROI");
                         }
                         }
