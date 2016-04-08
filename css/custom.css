@@ -92,9 +92,10 @@
 	padding: 20px 20px;	
 }
 
-#resultA{
+#resultA,#ROI{
 	font-size: 70px;
 	font-weight: 700;
+	margin-bottom: 70px;
 }
 .cover{
 	background-color: rgba(0, 0, 0, 0.5);
@@ -106,16 +107,13 @@
 }
 
 .room{
-	position: relative;
-}
-.size{
-	position: absolute;
-	left:200px;
+	display: inline-block;
 }
 
-.pricetitle{
+
+/*.pricetitle{
 	font-size: 30px;
-}
+}*/
 input{
 	color: #000;
 }
@@ -130,4 +128,9 @@ input{
 }
  .team-member h4{
  	margin-bottom: 10px;
+ }
+
+ .delete{
+ 	margin-bottom: 20px;
+ 	display: inline-block;
  }

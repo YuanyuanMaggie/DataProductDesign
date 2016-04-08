@@ -75,7 +75,7 @@
             <div class="intro-text">
                 <div class="intro-heading">Renovation ROI, simplified</div>
                 <div class="row">
-                    <div class="col-md-7 alignLeft">
+                    <div class="col-md-8 alignLeft">
                         <div class="intro-lead-in">Contract Estimate:
                             <input type="text" placeholder="$(Optional)" id="estimate"></input>
                         </div>
@@ -118,9 +118,12 @@
                                 </div>
                              </div>
                         </div>
+                         <div id="addroomhere">
+                             
+                         </div>
                         <div class="btn btn-xl addroom" id="addroom">Add more rooms</div>
                     </div>
-                    <div class="col-md-5 alignLeft">
+                    <div class="col-md-4 alignLeft">
                         <div class="intro-lead-in"><span class="pricetitle">Projected Sales Price Lift</span></div>
                         <div id="resultA"></div>
                         <div class="intro-lead-in"><span id="ROItitle"></span></div>
@@ -135,6 +138,7 @@
     </section>
         
     <script type="text/javascript">
+            var roomnumber = 1;
             var squareft = {"85298":111.72, "85233":145.27,"85297":99.49,"85235":101.1,"85296":98.99,"85234":170.3,"Global":122}
             var area = {
                 "Home Office":{
@@ -208,6 +212,15 @@
                     $( this ).removeClass( "hover" );
                 }
                 );
+            // $('#delete').click(function(){
+            //     console.log("delete");
+            //    // $(this).parent().remove();
+            //     });
+            $(function(){
+            $('#delete').on('click','.delete',function(){
+                alert("Delelte");
+            });
+            });
             var finalcost;
             var estimate;
             $('#activeBT').click(function(){
@@ -226,8 +239,8 @@
                             console.log("empty");
                         }else{
                             var roi = (finalcost-estimate)/estimate;
-                            roi = parseFloat(roi).toFixed(4);
                             roi = roi*100;
+                            roi = parseFloat(roi).toFixed(2);
                             $("#ROI").html(roi+"%");
                             $("#ROItitle").html("Projected ROI");
                         }
@@ -235,6 +248,15 @@
                     }
                 
             })
+
+            $("#addroom").click(function(){
+                roomnumber++;
+                var html = "<div class='room' id='"+roomnumber+"''>"+$("#1").html();
+                html += "<div class='btn addroom delete' id='delete'>Delete</div></div>"
+                $("#addroomhere").append(html);
+            }) 
+
+            
     </script>
 
     <footer>
